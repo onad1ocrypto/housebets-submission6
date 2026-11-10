@@ -1,0 +1,358 @@
+/* ============================================================================
+   THEME — "Terminal"
+   Submission 6. Loaded AFTER app.css, so it only overrides.
+
+   Direction: a trading terminal for odds. Warm near-black, amber figures,
+   monospace throughout, and — the idea the entry is built on — every price
+   carries the history of its own last moves as a sparkline along the
+   bottom of its tile. A price is a series, not a number.
+
+   Deliberate restraint, same as entry 5: the bet slip stays in plain
+   high-contrast type. A stake is the one figure a player must never
+   have to decode.
+
+   The Housebets mark is untouched: same SVG, recoloured to amber.
+
+   To switch direction, replace this file only. Nothing else changes.
+   ========================================================================= */
+
+:root{
+  /* ---- surfaces: warm near-black, like a phosphor screen ---- */
+  --page:      #0B0906;
+  --bar:       #14100A;
+  --card:      #191309;
+  --card-2:    #120E08;
+  --tile:      #1E1710;
+  --tile-2:    #241C12;
+  --tile-hi:   #2E2418;
+  --hair:      rgba(255,176,0,.13);
+  --hair-2:    rgba(255,176,0,.26);
+
+  /* ---- ink: warm light, easy on the dark amber ---- */
+  --ink:       #F2E7D2;
+  --ink-2:     #B9A585;
+  --ink-3:     #93826A;
+  --ink-4:     #756650;
+
+  /* ---- semantic text colours ---- */
+  --c-score:   #FFF6E0;
+  --c-team:    #E8DCC4;
+  --c-market:  #A08F75;
+  --c-price:   #FFB000;   /* amber — the one accent */
+
+  /* ---- accent ---- */
+  --aqua:      #FFB000;
+  --aqua-hi:   #FFD98A;
+  --aqua-deep: #33260A;
+  --aqua-deep2:#241A06;
+
+  --lime:      #C98A1E;
+  --lime-deep: #33260A;
+  --lime-soft: rgba(255,176,0,.13);
+
+  --live:      #FF4B3E;
+  --live-tx:   #FF8A7A;
+  --live-badge:#B3271C;   /* dark enough for white text on top */
+  --up:        #7CE38B;
+  --down:      #FF7A5C;
+  --gold:      #FFB000;
+
+  /* ---- the sports column: the terminal's darker side panel ---- */
+  --sport-bg:      #0C0906;
+  --sport-edge:    rgba(255,176,0,.18);
+  --sport-ink:     #B9A585;
+  --sport-head:    #A08F75;
+  --sport-hover:   rgba(255,176,0,.09);
+  --sport-n-bg:    rgba(255,176,0,.13);
+  --sport-n-ink:   #D8C39C;
+  --sport-on-bg:   rgba(255,176,0,.16);
+  --sport-on-bar:  #FFB000;
+  --sport-on-ink:  #FFF3DC;
+  --sport-on-n-bg: rgba(255,176,0,.28);
+  --sport-on-n-ink:#FFE9BE;
+  --sport-thumb:   #2E2418;
+
+  /* terminals are square — no soft card radius anywhere */
+  --r-sm: 2px;
+  --r:    3px;
+  --r-lg: 5px;
+
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+  --led:  ui-monospace, SFMono-Regular, Menlo, Consolas,
+          "Liberation Mono", monospace;
+}
+
+/* ============================================================================
+   THE SCREEN
+   Graph paper so the numbers have something to sit against, a scanline
+   pass, and one warm bloom across the top edge.
+   ========================================================================= */
+body{
+  background-color:#0B0906;
+  background-image:
+    /* graph paper — vertical then horizontal */
+    linear-gradient(90deg, rgba(255,176,0,.035) 1px, transparent 1px),
+    linear-gradient(0deg,  rgba(255,176,0,.035) 1px, transparent 1px),
+    /* scanlines */
+    repeating-linear-gradient(0deg, rgba(0,0,0,.22) 0 1px, transparent 1px 3px),
+    /* bloom */
+    radial-gradient(1000px 460px at 50% -18%, rgba(255,176,0,.085), transparent 62%),
+    /* the screen */
+    linear-gradient(180deg, #120E08 0%, #0B0906 55%, #070503 100%);
+  background-size: 32px 32px, 32px 32px, auto, auto, auto;
+  background-attachment: fixed, fixed, fixed, fixed, fixed;
+  min-height:100vh;
+}
+
+/* let the screen show through the app's own painted surfaces */
+.shell, .app, #app{
+  background:transparent !important;
+}
+
+.bar, .topbar{
+  background:rgba(11,9,6,.90) !important;
+  border-bottom:1px solid rgba(255,176,0,.20) !important;
+  backdrop-filter:blur(8px);
+}
+
+.main, .panel{
+  box-shadow:inset 0 0 0 1px rgba(255,176,0,.09);
+}
+
+/* ============================================================================
+   MONOSPACE WHERE THE TERMINAL NEEDS IT
+   Names, headings and pills go uppercase and monospaced. Body copy and
+   team names stay in the sans so long strings do not turn into walls.
+   ========================================================================= */
+.o .oname,
+.mname,
+.sect h2, .sect .h2,
+.rhead,
+.tk,
+.sb-top,
+.fpill, .chip,
+.mhead{
+  font-family:var(--led) !important;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.o .oname{ font-weight:500; }
+.sect h2, .sect .h2{ letter-spacing:.12em; }
+.fpill, .chip{ letter-spacing:.05em; }
+
+/* every figure on the screen, in monospace and tabular */
+.oval, .o .oval,
+.sb-num, .hscore b,
+.clock, .hkick, .mrow .day,
+.row .k, .pv .px{
+  font-family:var(--led) !important;
+  font-variant-numeric:tabular-nums lining-nums;
+}
+
+/* ============================================================================
+   Overrides for colours app.css hardcodes.
+   Each names the app.css line it replaces.
+   ========================================================================= */
+
+/* L123 / L750 / L786 / L845 / L895 — accent buttons become amber */
+.pillbtn.acc,
+.modal .card .acts .p,
+button.primary,
+.cta,
+.btn-acc{
+  background:linear-gradient(180deg,#FFC94D,#D98A00) !important;
+  color:#1A1204 !important;
+  border-color:rgba(255,176,0,.45) !important;
+}
+
+/* L167 — active rail item */
+.rail button.on{
+  color:var(--sport-on-ink) !important;
+  background:var(--sport-on-bg) !important;
+  box-shadow:inset 2px 0 0 var(--sport-on-bar) !important;
+}
+
+/* ---- the Live entry is lit -----------------------------------------
+   Same two homes as before: the left column on desktop, and the tab
+   strip below 980px where that column is hidden.
+------------------------------------------------------------------- */
+.rail button.is-live{
+  color:#FFDAD4 !important;
+  background:linear-gradient(90deg, rgba(255,75,62,.20), rgba(255,75,62,.05)) !important;
+  box-shadow:inset 0 0 0 1px rgba(255,75,62,.30), 0 0 14px rgba(255,75,62,.18) !important;
+}
+.rail button.is-live.on{
+  color:#FFF1EE !important;
+  background:linear-gradient(90deg, rgba(255,75,62,.30), rgba(255,176,0,.10)) !important;
+  box-shadow:inset 2px 0 0 var(--live), 0 0 18px rgba(255,75,62,.34) !important;
+}
+.rail button.is-live .n{
+  background:rgba(255,75,62,.24) !important;
+  color:#FFDAD4 !important;
+}
+
+.rail button .ldot,
+.tab.is-live::after{
+  width:7px; height:7px; border-radius:99px; background:var(--live);
+  box-shadow:0 0 0 3px rgba(255,75,62,.18), 0 0 10px rgba(255,75,62,.85);
+  animation:ldotPulse 1.6s ease-in-out infinite;
+}
+.rail button .ldot{ flex:0 0 auto; order:1; margin-left:7px; }
+.rail button .n{ order:2; }
+.tab.is-live::after{ content:""; position:absolute; top:7px; right:7px; }
+
+@keyframes ldotPulse{
+  0%,100%{ opacity:1;   box-shadow:0 0 0 3px rgba(255,75,62,.20), 0 0 10px rgba(255,75,62,.85); }
+  50%    { opacity:.45; box-shadow:0 0 0 5px rgba(255,75,62,.05), 0 0  6px rgba(255,75,62,.40); }
+}
+@media (prefers-reduced-motion:reduce){
+  .rail button .ldot,
+  .tab.is-live::after{ animation:none; }
+}
+
+.tab.is-live{
+  border-color:rgba(255,75,62,.48) !important;
+  box-shadow:0 1px 0 rgba(255,255,255,.10) inset, 0 0 16px rgba(255,75,62,.28) !important;
+}
+.tab.is-live.on{
+  border-color:var(--live) !important;
+  box-shadow:0 1px 0 rgba(255,255,255,.12) inset, 0 0 20px rgba(255,75,62,.42) !important;
+}
+.rail .rhead{ color:var(--sport-head) !important; }
+.rail button .n{
+  background:var(--sport-n-bg) !important;
+  color:var(--sport-n-ink) !important;
+}
+.rail button.on .n{
+  background:var(--sport-on-n-bg) !important;
+  color:var(--sport-on-n-ink) !important;
+}
+
+/* L303 / L818 / L900 — dropdowns, popovers, modals */
+.menu, .pop, .modal .card, .sheet{
+  background:#191309 !important;
+  border:1px solid rgba(255,176,0,.22) !important;
+  box-shadow:0 18px 40px rgba(0,0,0,.60) !important;
+}
+
+/* L339 / L344 / L348 — text that sat on dark and still does */
+.h1, .h2, .ttl, .mname,
+.tab[data-tab="live"],
+.tab[data-tab="live"].on{
+  color:var(--ink) !important;
+}
+
+/* L349 — focus border */
+*:focus-visible, .sel:focus-visible{
+  border-color:var(--aqua) !important;
+}
+
+/* L350 — selected control */
+.o.sel, .tab.on, .chip.on{
+  background:linear-gradient(180deg,#3A2A08 0%, #2A1E05 100%) !important;
+  border-color:rgba(255,176,0,.55) !important;
+}
+
+/* L600 — pre-match odds tiles */
+.mcard.pre .o{
+  background:#1E1710 !important;
+  border-color:rgba(255,255,255,.07) !important;
+}
+.mcard.pre .o .oname{ color:var(--ink-3) !important; }
+
+/* L691 — small accent badge */
+.badge{
+  background:var(--aqua) !important;
+  color:#1A1204 !important;
+}
+
+/* L810 — accent CTA */
+.cta-gold, button.gold{
+  background:linear-gradient(180deg,#FFC94D,#D98A00) !important;
+  color:#1A1204 !important;
+}
+
+/* L867 — avatar / mark chip */
+.avatar, .markchip{
+  background:var(--aqua) !important;
+  color:#1A1204 !important;
+}
+
+/* ============================================================================
+   THE FIGURES
+   A CRT glow, not a dot matrix: the score and the clock are amber, lit,
+   and plain monospace. No inset panel — that was entry 5's signature.
+   ========================================================================= */
+.sb-num,
+.hscore b{
+  color:#FFD98A !important;
+  text-shadow:0 0 8px rgba(255,176,0,.40), 0 0 22px rgba(255,176,0,.16);
+}
+.sb-dash, .hscore span{
+  color:#756650 !important;
+}
+.sb-top .k, .clock{ color:var(--live-tx) !important; }
+
+.scoreboard{
+  background:#191309 !important;
+  border:1px solid rgba(255,176,0,.20) !important;
+}
+.scoreboard.live{ box-shadow:inset 3px 0 0 rgba(255,75,62,.85) !important; }
+
+/* ============================================================================
+   THE SPARKLINES
+   Amber at rest, full strength on hover and when the price is in the
+   slip — the one place in the tile where the eye should land second.
+   ========================================================================= */
+.spark{
+  color:var(--aqua);
+  opacity:.5;
+  transition:opacity .12s ease;
+}
+.o:hover .spark{ opacity:.9; }
+.o.sel .spark{ opacity:1; color:var(--aqua-hi); }
+.o.susp .spark{ opacity:.18; }
+
+/* ============================================================================
+   THE BET SLIP STAYS ORDINARY
+   Deliberate, and carried over from entry 5. A stake is the one number
+   a player must never have to decode.
+   ========================================================================= */
+input[data-stake],
+.slipbar input,
+.sheet input,
+.stake{
+  background:#FBF3E2 !important;
+  color:#1A1204 !important;
+  border:1px solid rgba(255,176,0,.55) !important;
+  font-variant-numeric:tabular-nums;
+  text-shadow:none !important;
+}
+.slipbar input::placeholder,
+.sheet input::placeholder{ color:#756650 !important; }
+
+/* ============================================================================
+   Detail work
+   ========================================================================= */
+
+/* section headings get a hairline amber rule, like a terminal divider */
+.sect h2, .sect .h2{
+  border-bottom:1px solid rgba(255,176,0,.18);
+  padding-bottom:7px;
+}
+
+.crest{
+  box-shadow:0 0 0 1px rgba(255,176,0,.20);
+  border-radius:3px;
+}
+
+.livebadge{
+  background:var(--live-badge) !important;
+  color:#FFEDEA !important;
+  box-shadow:0 0 12px rgba(255,75,62,.40) !important;
+}
+
+.card, .mcard{
+  border-top-color:rgba(255,176,0,.14) !important;
+}
