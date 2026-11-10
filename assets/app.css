@@ -77,7 +77,7 @@
   --r-lg: 14px;
   --topbar-h: 56px;
   --rail-w: 212px;
-  --panel-w: 328px;
+  --panel-w: 272px;
   --nav-h: 58px;
 
   --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -263,7 +263,7 @@ a{ color:inherit; text-decoration:none; }
 }
 
 /* ---- the bet column breathes --------------------------------
-   Four layers, all gold and all slow, so the column reads as
+   Four layers, all cyan and all slow, so the column reads as
    "your money" without shouting:
      1. a wash that drifts through the background itself
      2. a halo rising and falling behind the slip
@@ -272,8 +272,8 @@ a{ color:inherit; text-decoration:none; }
    Everything speeds up once there is something in the slip.
 --------------------------------------------------------------- */
 @keyframes slipGlow{
-  0%,100%{ box-shadow:0 0 0 1px rgba(247,200,96,.10), 0 0 26px -10px rgba(247,200,96,.13); }
-  50%    { box-shadow:0 0 0 1px rgba(247,200,96,.34), 0 0 56px -6px rgba(247,200,96,.40); }
+  0%,100%{ box-shadow:0 0 0 1px rgba(2,247,253,.10), 0 0 26px -10px rgba(2,247,253,.13); }
+  50%    { box-shadow:0 0 0 1px rgba(2,247,253,.34), 0 0 56px -6px rgba(2,247,253,.40); }
 }
 @keyframes slipLine{
   0%   { transform:translateX(-100%); opacity:0; }
@@ -296,9 +296,9 @@ a{ color:inherit; text-decoration:none; }
 .panel{
   background-color:var(--card);
   background-image:
-    radial-gradient(115% 52% at 50% -6%,  rgba(247,200,96,.16), transparent 62%),
-    radial-gradient(90%  44% at 10% 110%, rgba(62,208,218,.085), transparent 60%),
-    linear-gradient(180deg, rgba(247,200,96,.06), transparent 44%, rgba(247,200,96,.032));
+    radial-gradient(115% 52% at 50% -6%,  rgba(2,247,253,.16), transparent 62%),
+    radial-gradient(90%  44% at 10% 110%, rgba(2,247,253,.085), transparent 60%),
+    linear-gradient(180deg, rgba(2,247,253,.06), transparent 44%, rgba(2,247,253,.032));
   background-size:210% 210%, 180% 180%, 100% 100%;
   background-repeat:no-repeat;
   animation:slipGlow 5.2s ease-in-out infinite,
@@ -307,12 +307,12 @@ a{ color:inherit; text-decoration:none; }
 .panel > *{ position:relative; z-index:1; }
 .panel::before{
   content:""; position:absolute; top:0; left:0; right:0; height:2px; z-index:3;
-  background:linear-gradient(90deg, transparent, rgba(247,200,96,.95), rgba(255,241,204,.98), rgba(247,200,96,.95), transparent);
+  background:linear-gradient(90deg, transparent, rgba(2,247,253,.95), rgba(196,244,241,.98), rgba(2,247,253,.95), transparent);
   animation:slipLine 5.2s ease-in-out infinite; pointer-events:none;
 }
 .panel::after{
   content:""; position:absolute; inset:-32% -22%; z-index:0; pointer-events:none;
-  background:radial-gradient(48% 38% at 50% 50%, rgba(247,200,96,.20), transparent 70%);
+  background:radial-gradient(48% 38% at 50% 50%, rgba(2,247,253,.20), transparent 70%);
   animation:slipHalo 8s ease-in-out infinite;
 }
 .panel.has-bets{
@@ -325,9 +325,9 @@ a{ color:inherit; text-decoration:none; }
 body.route-bets .main{
   background-color:var(--card);
   background-image:
-    radial-gradient(115% 52% at 50% -6%,  rgba(247,200,96,.16), transparent 62%),
-    radial-gradient(90%  44% at 10% 110%, rgba(62,208,218,.085), transparent 60%),
-    linear-gradient(180deg, rgba(247,200,96,.06), transparent 44%, rgba(247,200,96,.032));
+    radial-gradient(115% 52% at 50% -6%,  rgba(2,247,253,.16), transparent 62%),
+    radial-gradient(90%  44% at 10% 110%, rgba(2,247,253,.085), transparent 60%),
+    linear-gradient(180deg, rgba(2,247,253,.06), transparent 44%, rgba(2,247,253,.032));
   background-size:210% 210%, 180% 180%, 100% 100%;
   background-repeat:no-repeat;
   position:relative; overflow:hidden;
@@ -337,18 +337,18 @@ body.route-bets .main{
 body.route-bets .main > *{ position:relative; z-index:1; }
 body.route-bets .main::before{
   content:""; position:absolute; top:0; left:0; right:0; height:2px; z-index:3;
-  background:linear-gradient(90deg, transparent, rgba(247,200,96,.95), rgba(255,241,204,.98), rgba(247,200,96,.95), transparent);
+  background:linear-gradient(90deg, transparent, rgba(2,247,253,.95), rgba(196,244,241,.98), rgba(2,247,253,.95), transparent);
   animation:slipLine 5.2s ease-in-out infinite; pointer-events:none;
 }
 body.route-bets .main::after{
   content:""; position:absolute; inset:-32% -22%; z-index:0; pointer-events:none;
-  background:radial-gradient(48% 38% at 50% 50%, rgba(247,200,96,.20), transparent 70%);
+  background:radial-gradient(48% 38% at 50% 50%, rgba(2,247,253,.20), transparent 70%);
   animation:slipHalo 8s ease-in-out infinite;
 }
 @media (prefers-reduced-motion: reduce){
   .panel, .panel::before, .panel::after,
   body.route-bets .main, body.route-bets .main::before, body.route-bets .main::after{ animation:none; }
-  .panel, body.route-bets .main{ box-shadow:0 0 0 1px rgba(247,200,96,.18); }
+  .panel, body.route-bets .main{ box-shadow:0 0 0 1px rgba(2,247,253,.18); }
 }
 
 /* ============================================================
@@ -503,7 +503,7 @@ body.route-bets .main::after{
 .mcard .head .mkt{ color:var(--ink-3); display:flex; align-items:center; gap:4px; }
 .mcard .head .mkt:hover{ color:var(--aqua); }
 .mcard .head .star{ color:var(--ink-4); }
-.mcard .head .star.on{ color:var(--gold); }
+.mcard .head .star.on{ color:var(--aqua); }
 
 .teams{ padding:10px 12px 6px; }
 .trow{ display:flex; align-items:center; gap:9px; padding:5px 0; }
@@ -824,7 +824,7 @@ body.route-bets .main::after{
   display:flex; align-items:center; gap:6px; padding:5px 10px; border-radius:999px;
   border:1px solid var(--hair-2); font-size:12px; color:var(--ink-2); background:rgba(255,255,255,.03);
 }
-.sbtn.on{ border-color:rgba(247,200,96,.5); background:rgba(247,200,96,.12); color:var(--gold); }
+.sbtn.on{ border-color:rgba(2,247,253,.5); background:rgba(2,247,253,.12); color:var(--aqua); }
 
 .sb-score{ display:flex; align-items:center; gap:14px; margin-bottom:8px; }
 .sb-team{ flex:1 1 0; display:flex; align-items:center; gap:10px; min-width:0; }
@@ -985,10 +985,10 @@ body.route-bets .main::after{
 .place:disabled{ background:#1A2A31; color:var(--ink-4); cursor:not-allowed; }
 
 /* my bets */
-.mb{ background:var(--card-2); border:1px solid var(--hair); border-radius:var(--r); padding:10px; margin-bottom:8px; }
+.mb{ background:var(--card-2); border:1px solid var(--hair); border-radius:var(--r); padding:10px; margin-bottom:8px; position:relative; overflow:hidden; }
 .mb .sh{ display:flex; align-items:center; gap:8px; }
 .mb .sh .st{ font-size:10px; letter-spacing:.05em; text-transform:uppercase; font-weight:750; padding:2px 7px; border-radius:99px; }
-.mb .sh .st.open{ color:var(--aqua); background:rgba(62,208,218,.12); }
+.mb .sh .st.open{ color:var(--aqua); background:rgba(2,247,253,.13); }
 .mb .sh .st.won{ color:var(--up); background:rgba(53,211,154,.13); }
 .mb .sh .st.lost{ color:var(--ink-4); background:rgba(255,255,255,.05); }
 .mb .sh .st.cashed{ color:var(--gold); background:rgba(247,200,96,.13); }
@@ -996,6 +996,58 @@ body.route-bets .main::after{
 .mb .sel{ font-size:13.5px; font-weight:650; margin-top:7px; }
 .mb .meta{ font-size:11px; color:var(--ink-4); margin-top:2px; }
 .mb .figs{ display:flex; gap:16px; margin-top:9px; padding-top:9px; border-top:1px solid var(--hair); }
+
+/* ---- a bet row leads with the two teams -----------------------------
+   My bets is a list of fixtures, not a list of markets: a punter scans
+   for the team first and the price second.
+-------------------------------------------------------------------- */
+.mbfix{
+  display:flex; align-items:center; gap:8px; margin-top:9px;
+  padding:7px 8px; border-radius:var(--r-sm);
+  background:rgba(2,247,253,.045);
+  box-shadow:inset 0 0 0 1px rgba(2,247,253,.10);
+}
+.mbfix .fx{ display:flex; align-items:center; gap:6px; min-width:0; flex:1 1 0; }
+.mbfix .fx.rev{ justify-content:flex-end; }
+.mbfix .tn{
+  font-size:12.5px; font-weight:650; color:var(--c-team);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.mbfix .crest{ width:20px; height:20px; flex:0 0 20px; }
+.mbfix .vs{
+  flex:0 0 auto; font-size:10px; font-weight:750; color:var(--ink-4);
+  letter-spacing:.10em; text-transform:uppercase;
+}
+.mb .pr{ color:var(--aqua); font-weight:750; }
+
+/* ---- the shimmer ----------------------------------------------------
+   A slow cyan sweep across each row, staggered so a stack of rows never
+   flashes in unison, plus a breath on the price itself.
+-------------------------------------------------------------------- */
+.mb::after{
+  content:""; position:absolute; inset:0; z-index:3; pointer-events:none;
+  background:linear-gradient(105deg, transparent 40%, rgba(2,247,253,.13) 50%, transparent 60%);
+  background-size:250% 100%; background-repeat:no-repeat;
+  animation:mbSheen 6.5s ease-in-out infinite;
+}
+@keyframes mbSheen{
+  0%  { background-position:-150% 0; }
+  55% { background-position:250% 0; }
+  100%{ background-position:250% 0; }
+}
+.mb:nth-of-type(2n)::after{ animation-delay:-2.1s; }
+.mb:nth-of-type(3n)::after{ animation-delay:-4.3s; }
+
+@keyframes prGlow{
+  0%,100%{ text-shadow:0 0 0 rgba(2,247,253,0); }
+  50%    { text-shadow:0 0 9px rgba(2,247,253,.50); }
+}
+.mb .pr, .bet .bt .pr{ animation:prGlow 3.4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce){
+  .mb::after{ animation:none; opacity:0; }
+  .mb .pr, .bet .bt .pr{ animation:none; text-shadow:none; }
+}
 .mb .figs .f .k{ font-size:10.5px; color:var(--ink-4); }
 .mb .figs .f .v{ font-size:13px; font-weight:700; }
 .mb .co{ margin-top:9px; display:flex; gap:8px; align-items:center; }
@@ -1004,7 +1056,7 @@ body.route-bets .main::after{
 .mb .co .coval .v{ font-size:15px; font-weight:750; color:var(--gold); }
 .mb .co button{
   padding:8px 14px; border-radius:8px; font-size:12.5px; font-weight:700;
-  background:linear-gradient(180deg,#F7D98A,#F7C860); color:#3A2A05;
+  background:linear-gradient(180deg,#E4FBFB,#C4F4F1); color:#041015;
 }
 
 /* toasts */
@@ -1111,7 +1163,7 @@ body.route-bets .main::after{
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1120px){
-  :root{ --panel-w: 300px; }
+  :root{ --panel-w: 252px; }
 }
 /* The slip used to vanish entirely between 641px and 979px: the panel
    was hidden, and the bottom bar only exists at 640px. Keep the panel
@@ -1127,10 +1179,10 @@ body.route-bets .main::after{
   .tabs, .tabsrule{ display:none; }
 }
 @media (max-width: 860px){
-  :root{ --panel-w: 272px; }
+  :root{ --panel-w: 236px; }
 }
 @media (max-width: 700px){
-  :root{ --panel-w: 248px; }
+  :root{ --panel-w: 224px; }
 }
 @media (max-width: 640px){
   .panel{ display:none; }
@@ -1292,34 +1344,35 @@ body.bg-n::before{
 }
 
 /* =============================================================
-   GOLD — the bet column's own identity.
-   Browse = aqua (the market grid). Bet = gold (your money).
-   Gold is already in the official Housebets palette (#F7C860),
-   where it means "something changed / you acted on it".
+   CYAN — the bet column's own identity.
+   Browse = cyan (the market grid). Bet = cyan, lit (your money).
+   Gold leaves the column. On Housebets it means "something
+   changed", so it stays on the odds-changed banner, the cashed-out badge
+   and the cash-out figure — and goes nowhere else.
    ============================================================= */
-.panel{ border-color:rgba(247,200,96,.22); }
-.panel .sliptab.on{ color:var(--gold); border-bottom-color:var(--gold); }
-.panel .bet .bt .pr{ color:var(--gold); }
-.panel .rline.big b{ color:var(--gold); }
-.panel .totals .t2 b{ color:var(--gold); }
-.panel .stake:focus-within{ border-color:rgba(247,200,96,.5); box-shadow:0 0 0 3px rgba(247,200,96,.10); }
-.panel .quick button:hover{ border-color:rgba(247,200,96,.42); color:var(--gold); }
-.panel .pillbtn.acc{ background:linear-gradient(180deg,#FDE7B4,#F7C860); color:#1A1204; }
-.panel .place{ background:linear-gradient(180deg,#FDE7B4,#E9B23F); color:#1A1204; }
-.panel .empty .ico{ color:rgba(247,200,96,.55); }
+.panel{ border-color:rgba(2,247,253,.22); }
+.panel .sliptab.on{ color:var(--aqua); border-bottom-color:var(--aqua); }
+.panel .bet .bt .pr{ color:var(--aqua); }
+.panel .rline.big b{ color:var(--aqua); }
+.panel .totals .t2 b{ color:var(--aqua); }
+.panel .stake:focus-within{ border-color:rgba(2,247,253,.5); box-shadow:0 0 0 3px rgba(2,247,253,.10); }
+.panel .quick button:hover{ border-color:rgba(2,247,253,.42); color:var(--aqua); }
+.panel .pillbtn.acc{ background:linear-gradient(180deg,#E4FBFB,#C4F4F1); color:#041015; }
+.panel .place{ background:linear-gradient(180deg,#DFF8F9,#B7E9E6); color:#041015; }
+.panel .empty .ico{ color:rgba(2,247,253,.55); }
 
 /* the full-width bets route carries the same identity */
-body.route-bets .sliptab.on{ color:var(--gold); border-bottom-color:var(--gold); }
+body.route-bets .sliptab.on{ color:var(--aqua); border-bottom-color:var(--aqua); }
 body.route-bets .rline.big b,
-body.route-bets .totals .t2 b{ color:var(--gold); }
-body.route-bets .bet .bt .pr{ color:var(--gold); }
-body.route-bets .pillbtn.acc{ background:linear-gradient(180deg,#FDE7B4,#F7C860); color:#1A1204; }
-body.route-bets .place{ background:linear-gradient(180deg,#FDE7B4,#E9B23F); color:#1A1204; }
+body.route-bets .totals .t2 b{ color:var(--aqua); }
+body.route-bets .bet .bt .pr{ color:var(--aqua); }
+body.route-bets .pillbtn.acc{ background:linear-gradient(180deg,#E4FBFB,#C4F4F1); color:#041015; }
+body.route-bets .place{ background:linear-gradient(180deg,#DFF8F9,#B7E9E6); color:#041015; }
 
 /* the phone slip bar follows the same rule */
-.slipbar{ border-top:1px solid rgba(247,200,96,.30); }
-.slipbar .badge{ background:linear-gradient(180deg,#FDE7B4,#E9B23F); color:#1A1204; }
-.slipbar .amt{ color:var(--gold); }
+.slipbar{ border-top:1px solid rgba(2,247,253,.30); }
+.slipbar .badge{ background:linear-gradient(180deg,#DFF8F9,#B7E9E6); color:#041015; }
+.slipbar .amt{ color:var(--aqua); }
 
 /* ---- rendered sport icons ---------------------------------- */
 .tab .sport-ico{
@@ -1499,9 +1552,9 @@ body.route-bets .place{ background:linear-gradient(180deg,#FDE7B4,#E9B23F); colo
 .shb{
   width:100%; display:inline-flex; align-items:center; justify-content:center; gap:7px;
   height:34px; border-radius:8px; font-size:12.5px; font-weight:650;
-  color:var(--gold); background:rgba(247,200,96,.10); border:1px solid rgba(247,200,96,.32);
+  color:var(--aqua); background:rgba(2,247,253,.10); border:1px solid rgba(2,247,253,.32);
 }
-.shb:hover{ background:rgba(247,200,96,.18); }
+.shb:hover{ background:rgba(2,247,253,.18); }
 
 /* ---- share modal ------------------------------------------- */
 .sharet{ display:flex; align-items:center; gap:10px; margin-bottom:12px; }

@@ -1,76 +1,76 @@
 /* ============================================================================
-   THEME — "Terminal"
-   Submission 6. Loaded AFTER app.css, so it only overrides.
+   HOUSEBETS — SUBMISSION 6
+   The terminal stays: graph paper, scanlines, monospace where numbers live,
+   square corners. Only the palette changes, and it changes to the colours
+   Housebets actually ships.
 
-   Direction: a trading terminal for odds. Warm near-black, amber figures,
-   monospace throughout, and — the idea the entry is built on — every price
-   carries the history of its own last moves as a sparkline along the
-   bottom of its tile. A price is a series, not a number.
-
-   Deliberate restraint, same as entry 5: the bet slip stays in plain
-   high-contrast type. A stake is the one figure a player must never
-   have to decode.
-
-   The Housebets mark is untouched: same SVG, recoloured to amber.
-
-   To switch direction, replace this file only. Nothing else changes.
+   Taken from the brand, not invented:
+     #02F7FD  the mark's own cyan, and `fill-[#02F7FD]` on housebets.com
+     #C4F4F1  pale cyan — the label text and the primary button background
+              on the live site (`bg-[#C4F4F1] text-[#041015]`)
+     #041015  their <meta name="theme-color"> — the page
+     #0B1920  their card background
+     #F9F9FB  their heading white
+     #F7C860  gold, which on Housebets means "something changed / you acted
+              on it" — kept for the odds-changed banner and the cash-out
+              figure, and nowhere else.
    ========================================================================= */
 
 :root{
-  /* ---- surfaces: warm near-black, like a phosphor screen ---- */
-  --page:      #0B0906;
-  --bar:       #14100A;
-  --card:      #191309;
-  --card-2:    #120E08;
-  --tile:      #1E1710;
-  --tile-2:    #241C12;
-  --tile-hi:   #2E2418;
-  --hair:      rgba(255,176,0,.13);
-  --hair-2:    rgba(255,176,0,.26);
+  /* ---- surfaces: Housebets near-black, cool not warm ---- */
+  --page:      #041015;
+  --bar:       #071319;
+  --card:      #0B1920;
+  --card-2:    #071319;
+  --tile:      #102834;
+  --tile-2:    #14303D;
+  --tile-hi:   #1C4453;
+  --hair:      rgba(2,247,253,.14);
+  --hair-2:    rgba(2,247,253,.28);
 
-  /* ---- ink: warm light, easy on the dark amber ---- */
-  --ink:       #F2E7D2;
-  --ink-2:     #B9A585;
-  --ink-3:     #93826A;
-  --ink-4:     #756650;
+  /* ---- ink ---- */
+  --ink:       #F9F9FB;
+  --ink-2:     #AFCBD2;
+  --ink-3:     #8BA8B2;
+  --ink-4:     #6B8791;
 
   /* ---- semantic text colours ---- */
-  --c-score:   #FFF6E0;
-  --c-team:    #E8DCC4;
-  --c-market:  #A08F75;
-  --c-price:   #FFB000;   /* amber — the one accent */
+  --c-score:   #FFFFFF;
+  --c-team:    #DFF3F5;
+  --c-market:  #8BA8B2;
+  --c-price:   #02F7FD;   /* the brand cyan — the one accent */
 
   /* ---- accent ---- */
-  --aqua:      #FFB000;
-  --aqua-hi:   #FFD98A;
-  --aqua-deep: #33260A;
-  --aqua-deep2:#241A06;
+  --aqua:      #02F7FD;
+  --aqua-hi:   #C4F4F1;
+  --aqua-deep: #06303A;
+  --aqua-deep2:#04222A;
 
-  --lime:      #C98A1E;
-  --lime-deep: #33260A;
-  --lime-soft: rgba(255,176,0,.13);
+  --lime:      #6FD8D0;
+  --lime-deep: #08303A;
+  --lime-soft: rgba(2,247,253,.13);
 
-  --live:      #FF4B3E;
-  --live-tx:   #FF8A7A;
-  --live-badge:#B3271C;   /* dark enough for white text on top */
-  --up:        #7CE38B;
-  --down:      #FF7A5C;
-  --gold:      #FFB000;
+  --live:      #F41F50;
+  --live-tx:   #FF7B90;
+  --live-badge:#CE1533;   /* dark enough for white text on top */
+  --up:        #4ADE9F;
+  --down:      #FF8794;
+  --gold:      #F7C860;   /* Housebets' own "this changed" colour */
 
-  /* ---- the sports column: the terminal's darker side panel ---- */
-  --sport-bg:      #0C0906;
-  --sport-edge:    rgba(255,176,0,.18);
-  --sport-ink:     #B9A585;
-  --sport-head:    #A08F75;
-  --sport-hover:   rgba(255,176,0,.09);
-  --sport-n-bg:    rgba(255,176,0,.13);
-  --sport-n-ink:   #D8C39C;
-  --sport-on-bg:   rgba(255,176,0,.16);
-  --sport-on-bar:  #FFB000;
-  --sport-on-ink:  #FFF3DC;
-  --sport-on-n-bg: rgba(255,176,0,.28);
-  --sport-on-n-ink:#FFE9BE;
-  --sport-thumb:   #2E2418;
+  /* ---- the sports column: the darkest panel in the shell ---- */
+  --sport-bg:      #061119;
+  --sport-edge:    rgba(2,247,253,.18);
+  --sport-ink:     #AFCBD2;
+  --sport-head:    #8BA8B2;
+  --sport-hover:   rgba(2,247,253,.09);
+  --sport-n-bg:    rgba(2,247,253,.13);
+  --sport-n-ink:   #C4F4F1;
+  --sport-on-bg:   rgba(2,247,253,.16);
+  --sport-on-bar:  #02F7FD;
+  --sport-on-ink:  #EAFEFF;
+  --sport-on-n-bg: rgba(2,247,253,.28);
+  --sport-on-n-ink:#D6FBFC;
+  --sport-thumb:   #14303D;
 
   /* terminals are square — no soft card radius anywhere */
   --r-sm: 2px;
@@ -86,20 +86,20 @@
 /* ============================================================================
    THE SCREEN
    Graph paper so the numbers have something to sit against, a scanline
-   pass, and one warm bloom across the top edge.
+   pass, and one cyan bloom across the top edge.
    ========================================================================= */
 body{
-  background-color:#0B0906;
+  background-color:#041015;
   background-image:
     /* graph paper — vertical then horizontal */
-    linear-gradient(90deg, rgba(255,176,0,.035) 1px, transparent 1px),
-    linear-gradient(0deg,  rgba(255,176,0,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(2,247,253,.035) 1px, transparent 1px),
+    linear-gradient(0deg,  rgba(2,247,253,.035) 1px, transparent 1px),
     /* scanlines */
     repeating-linear-gradient(0deg, rgba(0,0,0,.22) 0 1px, transparent 1px 3px),
     /* bloom */
-    radial-gradient(1000px 460px at 50% -18%, rgba(255,176,0,.085), transparent 62%),
+    radial-gradient(1000px 460px at 50% -18%, rgba(2,247,253,.075), transparent 62%),
     /* the screen */
-    linear-gradient(180deg, #120E08 0%, #0B0906 55%, #070503 100%);
+    linear-gradient(180deg, #071319 0%, #041015 55%, #020A0E 100%);
   background-size: 32px 32px, 32px 32px, auto, auto, auto;
   background-attachment: fixed, fixed, fixed, fixed, fixed;
   min-height:100vh;
@@ -111,13 +111,13 @@ body{
 }
 
 .bar, .topbar{
-  background:rgba(11,9,6,.90) !important;
-  border-bottom:1px solid rgba(255,176,0,.20) !important;
+  background:rgba(4,16,21,.90) !important;
+  border-bottom:1px solid rgba(2,247,253,.20) !important;
   backdrop-filter:blur(8px);
 }
 
 .main, .panel{
-  box-shadow:inset 0 0 0 1px rgba(255,176,0,.09);
+  box-shadow:inset 0 0 0 1px rgba(2,247,253,.09);
 }
 
 /* ============================================================================
@@ -155,15 +155,16 @@ body{
    Each names the app.css line it replaces.
    ========================================================================= */
 
-/* L123 / L750 / L786 / L845 / L895 — accent buttons become amber */
+/* L123 / L750 / L786 / L845 / L895 — primary buttons become the pale cyan
+   Housebets uses for its own buttons: pale field, near-black ink. */
 .pillbtn.acc,
 .modal .card .acts .p,
 button.primary,
 .cta,
 .btn-acc{
-  background:linear-gradient(180deg,#FFC94D,#D98A00) !important;
-  color:#1A1204 !important;
-  border-color:rgba(255,176,0,.45) !important;
+  background:linear-gradient(180deg,#E4FBFB,#C4F4F1) !important;
+  color:#041015 !important;
+  border-color:rgba(2,247,253,.45) !important;
 }
 
 /* L167 — active rail item */
@@ -178,24 +179,24 @@ button.primary,
    strip below 980px where that column is hidden.
 ------------------------------------------------------------------- */
 .rail button.is-live{
-  color:#FFDAD4 !important;
-  background:linear-gradient(90deg, rgba(255,75,62,.20), rgba(255,75,62,.05)) !important;
-  box-shadow:inset 0 0 0 1px rgba(255,75,62,.30), 0 0 14px rgba(255,75,62,.18) !important;
+  color:#FFD5DD !important;
+  background:linear-gradient(90deg, rgba(244,31,80,.20), rgba(244,31,80,.05)) !important;
+  box-shadow:inset 0 0 0 1px rgba(244,31,80,.30), 0 0 14px rgba(244,31,80,.18) !important;
 }
 .rail button.is-live.on{
-  color:#FFF1EE !important;
-  background:linear-gradient(90deg, rgba(255,75,62,.30), rgba(255,176,0,.10)) !important;
-  box-shadow:inset 2px 0 0 var(--live), 0 0 18px rgba(255,75,62,.34) !important;
+  color:#FFE7EB !important;
+  background:linear-gradient(90deg, rgba(244,31,80,.30), rgba(2,247,253,.10)) !important;
+  box-shadow:inset 2px 0 0 var(--live), 0 0 18px rgba(244,31,80,.34) !important;
 }
 .rail button.is-live .n{
-  background:rgba(255,75,62,.24) !important;
-  color:#FFDAD4 !important;
+  background:rgba(244,31,80,.24) !important;
+  color:#FFD5DD !important;
 }
 
 .rail button .ldot,
 .tab.is-live::after{
   width:7px; height:7px; border-radius:99px; background:var(--live);
-  box-shadow:0 0 0 3px rgba(255,75,62,.18), 0 0 10px rgba(255,75,62,.85);
+  box-shadow:0 0 0 3px rgba(244,31,80,.18), 0 0 10px rgba(244,31,80,.85);
   animation:ldotPulse 1.6s ease-in-out infinite;
 }
 .rail button .ldot{ flex:0 0 auto; order:1; margin-left:7px; }
@@ -203,8 +204,8 @@ button.primary,
 .tab.is-live::after{ content:""; position:absolute; top:7px; right:7px; }
 
 @keyframes ldotPulse{
-  0%,100%{ opacity:1;   box-shadow:0 0 0 3px rgba(255,75,62,.20), 0 0 10px rgba(255,75,62,.85); }
-  50%    { opacity:.45; box-shadow:0 0 0 5px rgba(255,75,62,.05), 0 0  6px rgba(255,75,62,.40); }
+  0%,100%{ opacity:1;   box-shadow:0 0 0 3px rgba(244,31,80,.20), 0 0 10px rgba(244,31,80,.85); }
+  50%    { opacity:.45; box-shadow:0 0 0 5px rgba(244,31,80,.05), 0 0  6px rgba(244,31,80,.40); }
 }
 @media (prefers-reduced-motion:reduce){
   .rail button .ldot,
@@ -212,12 +213,12 @@ button.primary,
 }
 
 .tab.is-live{
-  border-color:rgba(255,75,62,.48) !important;
-  box-shadow:0 1px 0 rgba(255,255,255,.10) inset, 0 0 16px rgba(255,75,62,.28) !important;
+  border-color:rgba(244,31,80,.48) !important;
+  box-shadow:0 1px 0 rgba(255,255,255,.10) inset, 0 0 16px rgba(244,31,80,.28) !important;
 }
 .tab.is-live.on{
   border-color:var(--live) !important;
-  box-shadow:0 1px 0 rgba(255,255,255,.12) inset, 0 0 20px rgba(255,75,62,.42) !important;
+  box-shadow:0 1px 0 rgba(255,255,255,.12) inset, 0 0 20px rgba(244,31,80,.42) !important;
 }
 .rail .rhead{ color:var(--sport-head) !important; }
 .rail button .n{
@@ -231,8 +232,8 @@ button.primary,
 
 /* L303 / L818 / L900 — dropdowns, popovers, modals */
 .menu, .pop, .modal .card, .sheet{
-  background:#191309 !important;
-  border:1px solid rgba(255,176,0,.22) !important;
+  background:#0B1920 !important;
+  border:1px solid rgba(2,247,253,.22) !important;
   box-shadow:0 18px 40px rgba(0,0,0,.60) !important;
 }
 
@@ -250,59 +251,59 @@ button.primary,
 
 /* L350 — selected control */
 .o.sel, .tab.on, .chip.on{
-  background:linear-gradient(180deg,#3A2A08 0%, #2A1E05 100%) !important;
-  border-color:rgba(255,176,0,.55) !important;
+  background:linear-gradient(180deg,#0A3A46 0%, #062A33 100%) !important;
+  border-color:rgba(2,247,253,.55) !important;
 }
 
 /* L600 — pre-match odds tiles */
 .mcard.pre .o{
-  background:#1E1710 !important;
+  background:#102834 !important;
   border-color:rgba(255,255,255,.07) !important;
 }
 .mcard.pre .o .oname{ color:var(--ink-3) !important; }
 
-/* L691 — small accent badge */
+/* L691 — small accent badge: the brand cyan, near-black ink */
 .badge{
   background:var(--aqua) !important;
-  color:#1A1204 !important;
+  color:#041015 !important;
 }
 
 /* L810 — accent CTA */
 .cta-gold, button.gold{
-  background:linear-gradient(180deg,#FFC94D,#D98A00) !important;
-  color:#1A1204 !important;
+  background:linear-gradient(180deg,#E4FBFB,#C4F4F1) !important;
+  color:#041015 !important;
 }
 
 /* L867 — avatar / mark chip */
 .avatar, .markchip{
   background:var(--aqua) !important;
-  color:#1A1204 !important;
+  color:#041015 !important;
 }
 
 /* ============================================================================
    THE FIGURES
-   A CRT glow, not a dot matrix: the score and the clock are amber, lit,
-   and plain monospace. No inset panel — that was entry 5's signature.
+   A CRT glow, not a dot matrix: the score and the clock are lit cyan in
+   plain monospace. No inset panel — that was entry 5's signature.
    ========================================================================= */
 .sb-num,
 .hscore b{
-  color:#FFD98A !important;
-  text-shadow:0 0 8px rgba(255,176,0,.40), 0 0 22px rgba(255,176,0,.16);
+  color:#C4F4F1 !important;
+  text-shadow:0 0 8px rgba(2,247,253,.45), 0 0 22px rgba(2,247,253,.18);
 }
 .sb-dash, .hscore span{
-  color:#756650 !important;
+  color:#6B8791 !important;
 }
 .sb-top .k, .clock{ color:var(--live-tx) !important; }
 
 .scoreboard{
-  background:#191309 !important;
-  border:1px solid rgba(255,176,0,.20) !important;
+  background:#0B1920 !important;
+  border:1px solid rgba(2,247,253,.20) !important;
 }
-.scoreboard.live{ box-shadow:inset 3px 0 0 rgba(255,75,62,.85) !important; }
+.scoreboard.live{ box-shadow:inset 3px 0 0 rgba(244,31,80,.85) !important; }
 
 /* ============================================================================
    THE SPARKLINES
-   Amber at rest, full strength on hover and when the price is in the
+   Cyan at rest, full strength on hover and when the price is in the
    slip — the one place in the tile where the eye should land second.
    ========================================================================= */
 .spark{
@@ -317,42 +318,44 @@ button.primary,
 /* ============================================================================
    THE BET SLIP STAYS ORDINARY
    Deliberate, and carried over from entry 5. A stake is the one number
-   a player must never have to decode.
+   a player must never have to decode. The field is now the cool white
+   Housebets puts behind figures, but the rule is unchanged: bright
+   field, dark ink, no glow.
    ========================================================================= */
 input[data-stake],
 .slipbar input,
 .sheet input,
 .stake{
-  background:#FBF3E2 !important;
-  color:#1A1204 !important;
-  border:1px solid rgba(255,176,0,.55) !important;
+  background:#E6F7F8 !important;
+  color:#041015 !important;
+  border:1px solid rgba(2,247,253,.55) !important;
   font-variant-numeric:tabular-nums;
   text-shadow:none !important;
 }
 .slipbar input::placeholder,
-.sheet input::placeholder{ color:#756650 !important; }
+.sheet input::placeholder{ color:#6B8791 !important; }
 
 /* ============================================================================
    Detail work
    ========================================================================= */
 
-/* section headings get a hairline amber rule, like a terminal divider */
+/* section headings get a hairline cyan rule, like a terminal divider */
 .sect h2, .sect .h2{
-  border-bottom:1px solid rgba(255,176,0,.18);
+  border-bottom:1px solid rgba(2,247,253,.18);
   padding-bottom:7px;
 }
 
 .crest{
-  box-shadow:0 0 0 1px rgba(255,176,0,.20);
+  box-shadow:0 0 0 1px rgba(2,247,253,.20);
   border-radius:3px;
 }
 
 .livebadge{
   background:var(--live-badge) !important;
-  color:#FFEDEA !important;
-  box-shadow:0 0 12px rgba(255,75,62,.40) !important;
+  color:#FFE7EB !important;
+  box-shadow:0 0 12px rgba(244,31,80,.40) !important;
 }
 
 .card, .mcard{
-  border-top-color:rgba(255,176,0,.14) !important;
+  border-top-color:rgba(2,247,253,.14) !important;
 }

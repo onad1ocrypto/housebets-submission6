@@ -1121,16 +1121,43 @@ function myBetsHTML() {
   </div>`;
 }
 
+/* Reverse-look-up for bets that predate the team codes: the stored label
+   is "Home v Away", so split it and find the two abbreviations. */
+function teamsOf(b) {
+  if (b.home && b.away && HB.teams[b.home] && HB.teams[b.away]) return { home: b.home, away: b.away };
+  const parts = String(b.fixture || '').split(/\s+v\s+/);
+  const find = n => Object.keys(HB.teams).find(a => HB.teams[a].name === (n || '').trim());
+  const keys = Object.keys(HB.teams);
+  return { home: find(parts[0]) || keys[0], away: find(parts[1]) || keys[1] };
+}
+
+/* A bet row leads with the two teams, because that is what a punter
+   scans for. Market, pick and figures sit under it. */
 function mbHTML(b) {
   const ret = b.status === 'cashed' ? b.cashout : (b.status === 'won' ? b.ret : (b.status === 'lost' ? 0 : b.stake * b.odds));
+  const t = teamsOf(b);
+  const hn = HB.teams[t.home] ? HB.teams[t.home].name : String(b.fixture || '');
+  const an = HB.teams[t.away] ? HB.teams[t.away].name : '';
+  /* A stored pick can still hold an unresolved {home}/{away} token — the
+     seed data shipped one. Fill it from the row's own teams rather than
+     ever letting a placeholder reach the screen. */
+  const sname = a => (HB.teams[a] && (HB.teams[a].sname || HB.teams[a].name)) || '';
+  const pick = String(b.sel || '')
+    .replace(/\{home\}/g, sname(t.home))
+    .replace(/\{away\}/g, sname(t.away));
   return `
   <div class="mb">
     <div class="sh">
       <span class="st ${b.status}">${b.status === 'cashed' ? 'Cashed out' : b.status}</span>
       <span class="dt">${esc(b.placedAt)}</span>
     </div>
-    <div class="sel">${esc(b.sel)} <span style="color:var(--aqua);font-weight:700">@${odds2(b.odds)}</span></div>
-    <div class="meta">${esc(b.market)} · ${esc(b.fixture)}</div>
+    <div class="mbfix">
+      <span class="fx">${crest(t.home, 20)}<span class="tn">${esc(hn)}</span></span>
+      <span class="vs" aria-hidden="true">v</span>
+      <span class="fx rev"><span class="tn">${esc(an)}</span>${crest(t.away, 20)}</span>
+    </div>
+    <div class="sel">${esc(pick)} <span class="pr">@${odds2(b.odds)}</span></div>
+    <div class="meta">${esc(b.market)}</div>
     <div class="figs">
       <div class="f"><div class="k">Stake</div><div class="v">${money(b.stake)}</div></div>
       <div class="f"><div class="k">Potential</div><div class="v">${money(b.stake * b.odds)}</div></div>
@@ -1423,6 +1450,7 @@ function addToSlip(d) {
   S.slip.push({
     uid: 'u' + Math.random().toString(36).slice(2, 8),
     selId: k, selName: name, marketName: mname, fixtureLabel,
+    home: m.home, away: m.away, fixId: m.id,
     odds: S.prices[k], stake: '', changed: null, suspended: false
   });
   // tapping odds should always reveal the slip, wherever the panel was
@@ -1449,6 +1477,7 @@ function placeBet() {
   const id = 'b' + Math.random().toString(36).slice(2, 7);
   S.bets.unshift({
     id, sel: first.selName, market: first.marketName, fixture: first.fixtureLabel,
+    home: first.home, away: first.away, fixId: first.fixId,
     odds: first.odds, stake: total, status: 'open', placedAt: 'Just now', cashout: ret * 0.92
   });
   S.lastPlaced = { stake: total, ret, id };

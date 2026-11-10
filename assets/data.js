@@ -525,7 +525,7 @@ HB.scorers = HB.playerPool.slice(0, 16);
 
 /* ---------- sample settled / open bets (My bets) ---------- */
 HB.seedBets = [
-  { id: 'b1', sel: '{home}', market: 'Match result', fixture: 'Arsenal v Brighton & Hove Albion',
+  { id: 'b1', sel: 'Arsenal', market: 'Match result', fixture: 'Arsenal v Brighton & Hove Albion',
     odds: 1.30, stake: 100.00, status: 'open', placedAt: 'Today 15:42', cashout: 118.40 },
   { id: 'b2', sel: 'Over 2.5 goals', market: 'Total goals', fixture: 'Liverpool v Manchester United',
     odds: 1.85, stake: 50.00, status: 'open', placedAt: 'Today 14:10', cashout: 41.20 },
